@@ -1,0 +1,68 @@
+/******************************************
+/* CSS
+/*******************************************/
+html {
+  font-size: 62.5%;
+}
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+html {
+  height: 100%;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  flex-flow: column;
+}
+
+section, .square {
+  flex: 1;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+h1, p {
+  font-size: 3rem;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-bottom:1rem;
+}
+
+p {
+  font-size: 2.2rem;
+  margin-bottom:1.5rem;
+  max-width: 40rem;
+}
+
+main {
+  width: 40rem;
+  height: 40rem;
+}
+
+.square {
+  border: 1px solid black;
+}
+
+.ex {
+  background: #dba5db;
+}
+
+.oh {
+  background: #a9b7a6;
+}
