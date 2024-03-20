@@ -66,3 +66,10 @@ main {
 .oh {
   background: #a9b7a6;
 }
+
+.oh > div {
+  border: 5px solid #000;
+  height:60%;
+  width: 60%;
+  border-radius: 50%;
+}

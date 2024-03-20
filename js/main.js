@@ -10,8 +10,8 @@ const slot8 = document.querySelector('.slot8');
 const slot9 = document.querySelector('.slot9');
 
 class Game {
-    constructor(startingTurn, winner) {
-        this.turn = startingTurn
+    constructor(currentTurn, winner) {
+        this.turn = currentTurn
         this.winner = winner
     }
 
@@ -20,12 +20,18 @@ class Game {
         while (gameRunning) {
             this.announceTurn();
             this.takeTurn();
+            this.assessGameProgress(gameRunning);
             gameRunning = false;
         }
     }
 
     announceTurn() {
-        document.querySelector('p').textContent = `It is ${this.turn}'s turn. Please select the square which you want to place the ${this.turn} in.`
+        document.querySelector('p').textContent = `It is ${this.turn}'s turn. Please select the square in which you want to place the ${this.turn}.`
+    }
+
+    announceWinner() {
+        document.querySelector('p').textContent = `${this.winner} has won the game!`
+        console.log(`${this.winner} has won the game!`)
     }
 
     takeTurn() {
@@ -40,24 +46,50 @@ class Game {
             
             if(this.turn === 'X') {
                 slot.classList.add('ex');
-                // switching turn
+                // switching turn from X to O
                 this.turn = 'O'
+                this.announceTurn(); // announcing turn has switched
                 return
             } else if (this.turn === 'O') {
                 slot.classList.add('oh');
-                // switching turn
+                // switching turn from O to X
                 this.turn = 'X'
+                this.announceTurn();
                 return
             } 
             }
         }));
+    }
 
-        // switch this.turn to opposite letter so other player can have their turn
-        // this.turn === 'X' ? this.turn = 'O' : this.turn = 'X';
+    // assess whether there is a winner in each round
+    assessGameProgress(gameRunning) {
+        const winningCombos = [
+            [slot1, slot2, slot3],
+            [slot4, slot5, slot6],
+            [slot7, slot8, slot9],
+            [slot1, slot5, slot9],
+            [slot3, slot5, slot7],
+            [slot1, slot4, slot7],
+            [slot2, slot5, slot8],
+            [slot3, slot6, slot9]
+        ]
+        
+        winningCombos.forEach(combo => {
+            // if every slot in each winning combination slot contains either the ex class or if every slot contains the oh class, announce the winner and set gameRunning to false
+            if(combo.every(slot => slot.classList.contains('ex'))) {
+                this.winner = 'X'
+                gameRunning = false;
+                this.announceWinner();
+            } else if (combo.every(slot => slot.classList.contains('oh'))) {
+                this.winner = 'O'
+                gameRunning = false;
+                this.announceWinner();
+            }
+        })
+        gameRunning = false;
     }
 }
 
-// on click, players should be able to choose which slot
-
+// instantiate the ticTacToeGame
 const ticTacToe = new Game('X');
 ticTacToe.playGame()
