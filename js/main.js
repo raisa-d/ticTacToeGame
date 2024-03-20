@@ -61,7 +61,7 @@ class Game {
         }));
     }
 
-    // assess whether there is a winner in each round
+    // **assess whether there is a winner in each round
     assessGameProgress(gameRunning) {
         const winningCombos = [
             [slot1, slot2, slot3],
@@ -93,3 +93,8 @@ class Game {
 // instantiate the ticTacToeGame
 const ticTacToe = new Game('X');
 ticTacToe.playGame()
+
+/*
+NEXT STEPS:
+finish Game.assessGameProgress() so that it can identify the winner!
+*/
