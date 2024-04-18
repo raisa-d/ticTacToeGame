@@ -44,22 +44,24 @@ class Game {
         allSlots.forEach(slot => slot.addEventListener('click', () => {
             // if the slot is not already chosen
             if(!slot.classList.contains('ex') && !slot.classList.contains('oh')) {
-            
-            
-            if(this.turn === 'X') {
-                slot.classList.add('ex');
-                // switching turn from X to O
-                this.turn = 'O'
-                this.announceTurn(); // announcing turn has switched
-                return
-            } else if (this.turn === 'O') {
-                slot.classList.add('oh');
-                // switching turn from O to X
-                this.turn = 'X'
-                this.announceTurn();
-                return
-            } 
-            }
+                
+                // if it is X's turn, on the click add the X styling
+                if(this.turn === 'X') {
+                    slot.classList.add('ex');
+                    
+                    // switch turn from X to O
+                    this.turn = 'O'
+                    this.announceTurn();
+                    return
+                // if it is O's turn, on the click add the O styling
+                } else if (this.turn === 'O') {
+                    slot.classList.add('oh');
+                    // switch turn from O to X
+                    this.turn = 'X'
+                    this.announceTurn();
+                    return
+                } 
+                }
         }));
     }
 
