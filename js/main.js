@@ -31,7 +31,8 @@ class Game {
 
     announceWinner() {
         document.querySelector('p').textContent = `${this.winner} has won the game!`
-        console.log(`${this.winner} has won the game!`)
+        console.log(`${this.winner} has won the game!`);
+        // *** TO DO: add styling for the winning combo (change the color or something)
     }
 
     takeTurn() {
@@ -75,14 +76,14 @@ class Game {
         ]
         
         winningCombos.forEach(combo => {
-            // if every slot in each winning combination slot contains either the ex class or if every slot contains the oh class, announce the winner and set gameRunning to false
+            // ***CODE THIS if every slot in each winning combination slot contains either the ex class or if every slot contains the oh class, announce the winner and set gameRunning to false
             if(combo.every(slot => slot.classList.contains('ex'))) {
                 this.winner = 'X'
-                gameRunning = false;
+                // gameRunning = false;
                 this.announceWinner();
             } else if (combo.every(slot => slot.classList.contains('oh'))) {
                 this.winner = 'O'
-                gameRunning = false;
+                // gameRunning = false;
                 this.announceWinner();
             }
         })
