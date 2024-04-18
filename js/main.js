@@ -20,8 +20,7 @@ class Game {
         // game loop runs while game is running
         while (gameRunning) {
             this.announceTurn();
-            this.takeTurn();
-            gameRunning = this.assessGameProgress();
+            gameRunning = this.takeTurn();
         }
     }
 
@@ -51,20 +50,20 @@ class Game {
                     // switch turn from X to O
                     this.turn = 'O'
                     this.announceTurn();
-                    return
+                    return this.assessGameProgress()
                 // if it is O's turn, on the click add the O styling
                 } else if (this.turn === 'O') {
                     slot.classList.add('oh');
                     // switch turn from O to X
                     this.turn = 'X'
                     this.announceTurn();
-                    return
+                    return this.assessGameProgress()
                 } 
                 }
         }));
     }
 
-    // **assess whether there is a winner in each round
+    // assess whether there is a winner in each round
     assessGameProgress() {
         const winningCombos = [
             [this.slot1, this.slot2, this.slot3],
@@ -78,22 +77,25 @@ class Game {
         ]
         
         winningCombos.forEach(combo => {
-            // ***CODE THIS if every slot in each winning combination slot contains either the ex class or if every slot contains the oh class, announce the winner and set gameRunning to false
+            // ***CODE THIS if every slot in each winning combination slot contains either the ex class or if every slot contains the oh class, announce the winner and set gameRunning to false            
 
             // if every slot in the current winning combo contains a class of ex, then X wins, we announce the winner, and return false for gameRunning
+            // *** TRY SOMETHING OTHER THAN EVERY, IT NEVER EVALUATES THIS AS TRUE EVEN WHEN IT SHOULD
             if(combo.every(slot => slot.classList.contains('ex'))) {
-                this.winner = 'X'
+                this.winner = 'X';
                 this.announceWinner();
                 return false;
             
             // if O wins, we do the same
             } else if (combo.every(slot => slot.classList.contains('oh'))) {
-                this.winner = 'O'
+                this.winner = 'O';
                 this.announceWinner();
                 return false;
+            } else {
+                console.log('did not detect a winner for this round');
             }
         })
-        return false;
+        // return false;
     }
 }
 
