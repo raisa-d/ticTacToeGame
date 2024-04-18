@@ -1,18 +1,18 @@
-// variables for each slot
-const slot1 = document.querySelector('.slot1');
-const slot2 = document.querySelector('.slot2');
-const slot3 = document.querySelector('.slot3');
-const slot4 = document.querySelector('.slot4');
-const slot5 = document.querySelector('.slot5');
-const slot6 = document.querySelector('.slot6');
-const slot7 = document.querySelector('.slot7');
-const slot8 = document.querySelector('.slot8');
-const slot9 = document.querySelector('.slot9');
 
 class Game {
     constructor(currentTurn, winner) {
         this.turn = currentTurn
         this.winner = winner
+        // variables for each slot
+        this.slot1 = document.querySelector('.slot1');
+        this.slot2 = document.querySelector('.slot2');
+        this.slot3 = document.querySelector('.slot3');
+        this.slot4 = document.querySelector('.slot4');
+        this.slot5 = document.querySelector('.slot5');
+        this.slot6 = document.querySelector('.slot6');
+        this.slot7 = document.querySelector('.slot7');
+        this.slot8 = document.querySelector('.slot8');
+        this.slot9 = document.querySelector('.slot9');
     }
 
     playGame() {
@@ -21,8 +21,7 @@ class Game {
         while (gameRunning) {
             this.announceTurn();
             this.takeTurn();
-            this.assessGameProgress(gameRunning);
-            gameRunning = false;
+            gameRunning = this.assessGameProgress();
         }
     }
 
@@ -66,31 +65,35 @@ class Game {
     }
 
     // **assess whether there is a winner in each round
-    assessGameProgress(gameRunning) {
+    assessGameProgress() {
         const winningCombos = [
-            [slot1, slot2, slot3],
-            [slot4, slot5, slot6],
-            [slot7, slot8, slot9],
-            [slot1, slot5, slot9],
-            [slot3, slot5, slot7],
-            [slot1, slot4, slot7],
-            [slot2, slot5, slot8],
-            [slot3, slot6, slot9]
+            [this.slot1, this.slot2, this.slot3],
+            [this.slot4, this.slot5, this.slot6],
+            [this.slot7, this.slot8, this.slot9],
+            [this.slot1, this.slot5, this.slot9],
+            [this.slot3, this.slot5, this.slot7],
+            [this.slot1, this.slot4, this.slot7],
+            [this.slot2, this.slot5, this.slot8],
+            [this.slot3, this.slot6, this.slot9]
         ]
         
         winningCombos.forEach(combo => {
             // ***CODE THIS if every slot in each winning combination slot contains either the ex class or if every slot contains the oh class, announce the winner and set gameRunning to false
+
+            // if every slot in the current winning combo contains a class of ex, then X wins, we announce the winner, and return false for gameRunning
             if(combo.every(slot => slot.classList.contains('ex'))) {
                 this.winner = 'X'
-                // gameRunning = false;
                 this.announceWinner();
+                return false;
+            
+            // if O wins, we do the same
             } else if (combo.every(slot => slot.classList.contains('oh'))) {
                 this.winner = 'O'
-                // gameRunning = false;
                 this.announceWinner();
+                return false;
             }
         })
-        gameRunning = false;
+        return false;
     }
 }
 
