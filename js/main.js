@@ -17,6 +17,7 @@ class Game {
 
     playGame() {
         let gameRunning = true;
+        // game loop runs while game is running
         while (gameRunning) {
             this.announceTurn();
             this.takeTurn();
@@ -97,5 +98,6 @@ ticTacToe.playGame()
 
 /*
 NEXT STEPS:
-finish Game.assessGameProgress() so that it can identify the winner!
+- finish Game.assessGameProgress() so that it can identify the winner!
+- add styling for winning combination
 */
