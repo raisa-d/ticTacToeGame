@@ -26,10 +26,12 @@
 </ul>
 
 ## Optimizations
-Future iterations will include the following updates/features:
-- Add styling for the "X" player's boxes (right now the styling is just a pink background)
+The next iteration will focus on prioritizing the following udpates:
+- Styling will be added for the "X" player's boxes (right now the styling is just a pink background)
 - Once one player wins the game, they should no longer be able to select more boxes (if there are free ones).
 - Add styling for when the winner wins, highlight the winning combination.
+
+Future steps:
 - Adding the option to play against a bot (right now players can play side by side with another human).
 
 ## Lessons Learned
