@@ -6,7 +6,7 @@ html {
 }
 
 /* Box Model Hack */
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -30,23 +30,25 @@ main {
   flex-flow: column;
 }
 
-section, .square {
+section,
+.square {
   flex: 1;
 }
 
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
-h1, p {
+h1,
+p {
   font-size: 3rem;
   text-align: center;
   font-family: Arial, sans-serif;
-  margin-bottom:1rem;
+  margin-bottom: 1rem;
 }
 
 p {
   font-size: 2.2rem;
-  margin-bottom:1.5rem;
+  margin-bottom: 1.5rem;
   max-width: 40rem;
 }
 
@@ -63,13 +65,20 @@ main {
   background: #dba5db;
 }
 
+.x-present {
+  visibility: hidden;
+  font-family: "Open Sans", sans-serif;
+  font-size: 9.5rem;
+  color: #F3F2EE;
+}
+
 .oh {
   background: #a9b7a6;
 }
 
-.oh > div {
+.oh>div {
   border: 5px solid #000;
-  height:60%;
+  height: 60%;
   width: 60%;
   border-radius: 50%;
 }

@@ -41,25 +41,26 @@ class Game {
         // add event listeners to each slot to listen for a click
         allSlots.forEach(slot => slot.addEventListener('click', () => {
             // if the slot is not already chosen
-            if(!slot.classList.contains('ex') && !slot.classList.contains('oh')) {
-                
+            if (!slot.classList.contains('ex') && !slot.classList.contains('oh')) {
+
                 // if it is X's turn, on the click add the X styling
-                if(this.turn === 'X') {
+                if (this.turn === 'X') {
                     slot.classList.add('ex');
-                    
+                    slot.querySelector('.x-present').style.visibility = 'initial'
+
                     // switch turn from X to O
                     this.turn = 'O'
                     this.announceTurn();
                     return this.assessGameProgress()
-                // if it is O's turn, on the click add the O styling
+                    // if it is O's turn, on the click add the O styling
                 } else if (this.turn === 'O') {
                     slot.classList.add('oh');
                     // switch turn from O to X
                     this.turn = 'X'
                     this.announceTurn();
                     return this.assessGameProgress()
-                } 
                 }
+            }
         }));
     }
 
@@ -75,15 +76,15 @@ class Game {
             [this.slot2, this.slot5, this.slot8],
             [this.slot3, this.slot6, this.slot9]
         ]
-        
+
         winningCombos.forEach(combo => {
             // if every slot in the current winning combo contains a class of ex, then X wins, we announce the winner, and return false for gameRunning
-            if(combo.every(slot => slot.classList.contains('ex'))) {
+            if (combo.every(slot => slot.classList.contains('ex'))) {
                 this.winner = 'X';
                 this.announceWinner();
                 return false;
-            
-            // if O wins, we do the same
+
+                // if O wins, we do the same
             } else if (combo.every(slot => slot.classList.contains('oh'))) {
                 this.winner = 'O';
                 this.announceWinner();
