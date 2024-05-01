@@ -27,7 +27,6 @@
 
 ## Optimizations
 The next iteration will focus on prioritizing the following udpates:
-- Styling will be added for the "X" player's boxes (right now the styling is just a pink background)
 - Once one player wins the game, they should no longer be able to select more boxes (if there are free ones).
 - Add styling for when the winner wins, highlight the winning combination.
 
@@ -35,7 +34,8 @@ Future steps:
 - Adding the option to play against a bot (right now players can play side by side with another human).
 
 ## Lessons Learned
-<p>We worked on this in collaboration and it has proven difficult to figure out GitHub workflow. The team is currently in the process of working out how the collaborators can push code to this repository. Using Object-Oriented Programming principles was also a learning experience. We opted to create a Game class with a game loop to run the game, which calls different methods within the Game class.</p>
+<p>We worked on this in collaboration and it was a learning curve working with multiple collaborators in GitHub. In the end, I added my team member as a collaborator to the repository, they forked the repository and submitted a pull request from there.</p>
+<p>Using Object-Oriented Programming principles was also a learning experience. We opted to create a Game class with a game loop to run the game, which calls different methods within the Game class.</p>
 
 ## Contact
 <p> 
