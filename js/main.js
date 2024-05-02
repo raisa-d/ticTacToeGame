@@ -97,10 +97,10 @@ class Game {
                 allSlots.forEach(slot => slot.style.pointerEvents = 'none');
                 return false;
             } else {
+                document.querySelector('p').textContent = 'Tie game';
                 console.log('did not detect a winner for this round');
             }
         })
-        // return false;
     }
 }
 
