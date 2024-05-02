@@ -31,7 +31,7 @@ class Game {
     announceWinner() {
         document.querySelector('p').textContent = `${this.winner} has won the game!`
         console.log(`${this.winner} has won the game!`);
-        // *** TO DO: add styling for the winning combo (change the color or something) & disallow users from selecting more boxes to fill with their position
+        // *** TO DO: add styling for the winning combo (change the color or something)
     }
 
     takeTurn() {
@@ -78,22 +78,29 @@ class Game {
         ]
 
         winningCombos.forEach(combo => {
+            //select all squares on board 
+            let allSlots = document.querySelectorAll('.square');
+
             // if every slot in the current winning combo contains a class of ex, then X wins, we announce the winner, and return false for gameRunning
             if (combo.every(slot => slot.classList.contains('ex'))) {
                 this.winner = 'X';
                 this.announceWinner();
+                //if 'X' announced as winner, disable further box selections
+                allSlots.forEach(slot => slot.style.pointerEvents = 'none');
                 return false;
 
                 // if O wins, we do the same
             } else if (combo.every(slot => slot.classList.contains('oh'))) {
                 this.winner = 'O';
                 this.announceWinner();
+                //if 'O' announced as winner, disable further box selections 
+                allSlots.forEach(slot => slot.style.pointerEvents = 'none');
                 return false;
             } else {
+                document.querySelector('p').textContent = 'Tie game';
                 console.log('did not detect a winner for this round');
             }
         })
-        // return false;
     }
 }
 
